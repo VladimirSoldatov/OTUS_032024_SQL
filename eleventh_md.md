@@ -70,23 +70,23 @@ SQL statistics:<br>
 Select name, category, setting from  pg_settings where name in ('maintenance_work_mem','shared_buffers', 'work_mem','checkpoint_completion_target','checkpoint_timeout','min_wal_size','max_wal_size','bgwriter_lru_maxpages','bgwriter_lru_multiplier','effective_cache_size','random_page_cost','wal_compression','fsyncoff','full_page_writes','synchronous_commit');
 
 
-|name|category|default|
-|:-:|:-:|:-:|
-|bgwriter_lru_maxpages|Resource Usage / Background Writer|100|
-|bgwriter_lru_multiplier|Resource Usage / Background Writer|2|
-|checkpoint_completion_target|Write-Ahead Log/ Checkpoints|0.9|
-|checkpoint_timeout| Write-Ahead Log / Checkpoints|300|
-|effective_cache_size|Query Tuning / Planner Cost Constants|524288|
-|full_page_writes|Write-Ahead Log / Settings|on|
-|maintenance_work_mem|Resource Usage / Memory|65536|
-|max_wal_size|Write-Ahead Log / Checkpoints|1024
-|min_wal_size|Write-Ahead Log / Checkpoints|80|
-|random_page_cost|Query Tuning / Planner Cost Constants|4|
-|shared_buffers| Resource Usage / Memory|16384|
-|synchronous_commit|Write-Ahead Log / Settings|on|
-|wal_compression|Write-Ahead Log / Settings|off|
-|work_mem|Resource Usage / Memory|4096|
-|(14 rows)|||
+|name|category|default|new|
+|:-:|:-:|:-:|:-:|
+|bgwriter_lru_maxpages|Resource Usage / Background Writer|100|1000|
+|bgwriter_lru_multiplier|Resource Usage / Background Writer|2|10|
+|checkpoint_completion_target|Write-Ahead Log/ Checkpoints|0.9|0.5|
+|checkpoint_timeout| Write-Ahead Log / Checkpoints|300s|1h|
+|effective_cache_size|Query Tuning / Planner Cost Constants|524288|20GB|
+|full_page_writes|Write-Ahead Log / Settings|on|off|
+|maintenance_work_mem|Resource Usage / Memory|65536|2GB|
+|max_wal_size|Write-Ahead Log / Checkpoints|1024|10GB|
+|min_wal_size|Write-Ahead Log / Checkpoints|80|1GB|
+|random_page_cost|Query Tuning / Planner Cost Constants|4|1|
+|shared_buffers| Resource Usage / Memory|16384|3GB|
+|synchronous_commit|Write-Ahead Log / Settings|on|off|
+|wal_compression|Write-Ahead Log / Settings|off|on|
+|work_mem|Resource Usage / Memory|4096|16MB|
+|(14 rows)||||
 
 
 <table>
@@ -113,3 +113,10 @@ Select name, category, setting from  pg_settings where name in ('maintenance_wor
  <tr><td><td>execution time (avg/stddev): </td><td> 600.0925/0.00</td></tr>
  </TABLE>
  21. Эффективность выросла до 150%, и  в приципе ошибок стало даже меньше. Латентность тоже знизилась
+
+ Причины:
+ 1) Более оптимальные настройки памяти
+ 2) Уменьшен интервал сброса файлов на диск, больший объем крутится в операвтиной памяти
+ 3) Испоьзуются полшие страницы
+ 4) Несихронный комит
+ 5) Увеличины размеры WAL - файлов
