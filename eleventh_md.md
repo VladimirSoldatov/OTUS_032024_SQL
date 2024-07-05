@@ -28,7 +28,88 @@
 host    all             all             127.0.0.1/32            trust
 18. ./tpcc.lua --pgsql-host=127.0.0.1 --pgsql-port=5432 --pgsql-user=postgres --pgsql-db=bench_test --time=120 --report-interval=1  --tables=10 --scale=10 --use_fk=0 --trx_level=RC --db-driver=pgsql prepare
 
-|deadlock_timeout|
-|:-:|
-|200s|
+19. select datname, pg_size_pretty(pg_database_size(datname)) as "Size" from pg_stat_database;
 
+
+
+|datname|Size|
+|:-:|:-:|
+|postgres|7500 kB|
+|bench_test|10 GB|
+|template1|7564 kB|
+|template0|7345 kB|
+|(5 rows)||
+
+20. ./tpcc.lua --pgsql-host=127.0.0.1 --pgsql-port=5432 --pgsql-user=postgres --pgsql-db=bench_test --time=600 --report-interval=1 --tables=10 --scale=10 --use_fk=0 --trx_level=RC --db-driver=pgsql run
+
+SQL statistics:<br>
+ <table>
+ <th>queries performed:</th>
+ <tr><td><td>read:</td><td>10548</td></tr>
+ <tr><td></td><td> write: </td><td>10864</td></tr>
+ <tr><td></td><td> other: </td><td> 1624</td></tr>
+ <tr><td><td> total: </td><td> 23036M</td></tr>
+ <tr><td>transactions: </td><td> 811 (1.35 per sec.)</td></tr>
+<tr><td><td>queries: </td><td> 23036 (38.34 per sec.)</td></tr>
+ <tr><td><td>ignored errors: </td><td> 5 (0.01 per sec.)</td></tr>
+ <tr><td><td>reconnects: </td><td> 0 (0.00 per sec.)</td></tr>
+ <tr><td> General statistics:</td><td></td></tr>
+ <tr><td><td> total time: </td><td> 600.9039s</td></tr>
+ <tr><td><td>total number of events: </td><td> 811</td></tr>
+ <tr><td>Latency (ms):</td><td></td></tr>
+ <tr><td><td>min: </td><td> 1.55</td></tr>
+<tr><td><td>avg: </td><td> 740.94</td></tr>
+ <tr><td><td> max: </td><td> 7972.79 </td></tr>
+ <tr><td><td>95th percentile: </td><td> 2728.81 </td></tr>
+<tr><td><td>sum: </td><td> 600899.54</td></tr>
+ <tr><td> Threads fairness: </td><td> </td></tr>
+ <tr><td><td>events (avg/stddev): </td><td> 811.0000/0.00</td></tr>
+ <tr><td><td>execution time (avg/stddev): </td><td> 600.8995/0.00</td></tr>
+</table>
+
+Select name, category, setting from  pg_settings where name in ('maintenance_work_mem','shared_buffers', 'work_mem','checkpoint_completion_target','checkpoint_timeout','min_wal_size','max_wal_size','bgwriter_lru_maxpages','bgwriter_lru_multiplier','effective_cache_size','random_page_cost','wal_compression','fsyncoff','full_page_writes','synchronous_commit');
+
+
+|name|category|default|
+|:-:|:-:|:-:|
+|bgwriter_lru_maxpages|Resource Usage / Background Writer|100|
+|bgwriter_lru_multiplier|Resource Usage / Background Writer|2|
+|checkpoint_completion_target|Write-Ahead Log/ Checkpoints|0.9|
+|checkpoint_timeout| Write-Ahead Log / Checkpoints|300|
+|effective_cache_size|Query Tuning / Planner Cost Constants|524288|
+|full_page_writes|Write-Ahead Log / Settings|on|
+|maintenance_work_mem|Resource Usage / Memory|65536|
+|max_wal_size|Write-Ahead Log / Checkpoints|1024
+|min_wal_size|Write-Ahead Log / Checkpoints|80|
+|random_page_cost|Query Tuning / Planner Cost Constants|4|
+|shared_buffers| Resource Usage / Memory|16384|
+|synchronous_commit|Write-Ahead Log / Settings|on|
+|wal_compression|Write-Ahead Log / Settings|off|
+|work_mem|Resource Usage / Memory|4096|
+|(14 rows)|||
+
+
+<table>
+ <th>queries performed:</th>
+ <tr><td><td>read:</td><td>14988</td></tr>
+ <tr><td></td><td> write: </td><td>15486</td></tr>
+ <tr><td></td><td> other: </td><td>2298</td></tr>
+ <tr><td><td> total: </td><td>32772</td></tr>
+ <tr><td>transactions: </td><td> 1148   (1.91 per sec.)</td></tr>
+<tr><td><td>queries: </td><td> 32772  (54.61 per sec.)</td></tr>
+ <tr><td><td>ignored errors: </td><td> 4      (0.01 per sec.)</td></tr>
+ <tr><td><td>reconnects: </td><td> 0 (0.00 per sec.)</td></tr>
+ <tr><td> General statistics:</td><td></td></tr>
+ <tr><td><td> total time: </td><td> 600.0980s</td></tr>
+ <tr><td><td>total number of events: </td><td> 1148</td></tr>
+ <tr><td>Latency (ms):</td><td></td></tr>
+ <tr><td><td>min: </td><td>  1.56</td></tr>
+<tr><td><td>avg: </td><td> 522.73</td></tr>
+ <tr><td><td> max: </td><td> 7627.10 </td></tr>
+ <tr><td><td>95th percentile: </td><td> 1973.38 </td></tr>
+<tr><td><td>sum: </td><td> 600092.50</td></tr>
+ <tr><td> Threads fairness: </td><td> </td></tr>
+ <tr><td><td>events (avg/stddev): </td><td> 1148.0000/0.00</td></tr>
+ <tr><td><td>execution time (avg/stddev): </td><td> 600.0925/0.00</td></tr>
+ </TABLE>
+ 21. Эффективность выросла до 150%, и  в приципе ошибок стало даже меньше. Латентность тоже знизилась
