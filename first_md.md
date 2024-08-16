@@ -3,7 +3,7 @@
 3. Скачал с сайта предустановленный образ с развернутой Ubuntu 23.10.
 4. Создал виртуальную машину Linux без установки, подключив образ к систему в качестве HDD.
 5. С помощью консоли Windows команды ssh-keygen -t ed25519 создал key pair.
-6. С помощью команды type c:\users\vvsoldatov\ssh\id_rsa.pub | ssh osboxes@[имя сервера] -p [порт] "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys" перенес сертификат на сервер.
+6. С помощью команды type c:\users\[имя_пользователя]\ssh\id_rsa.pub | ssh osboxes@[имя сервера] -p [порт] "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys" перенес сертификат на сервер.
 7. Проверил подключени, работает.
 8. Поставил PostgreSQL 15, используя комманду sudo apt install postgresql.
 9. Отредактировал pg_hba.conf заменив настройки локального подключения для пользователя postgres как trust вместо peer.
@@ -24,7 +24,7 @@ demo_otus=*# select* from persons;
 
 18. insert into persons(first_name, second_name) values('sergey', 'sergeev');
 19. До комита вторая сессия не видит изменения от первой сессии. Причина уровень изоляции - READ COMMITED
-20. COMMIT 
+20. COMMIT;
 21. После комита в первой сессии изменения стали заметны и во второй.
 
 |id|first_name|second_name|
