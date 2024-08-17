@@ -81,4 +81,5 @@ where cast (replace(passenger_id,' ','') as BIGINT) = 9864114954<>
 FROM bookings.tickets
 where passenger_id  = '9864 114954'
 44. Execution Time: 517.000 ms
-
+45. CREATE UNIQUE INDEX boarding_passes_flight_id_seat_no_key ON bookings.boarding_passes USING btree (flight_id, seat_no);
+46. Создали уникальный индекс для двух полей. Явлется логичнымЮ если мы хотим получить данные для конкретного пассажира в рамкаъ рейса.
