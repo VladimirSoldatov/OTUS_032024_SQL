@@ -109,4 +109,32 @@ cd tds_fdw-${TDS_FDW_VERSION}/
 make USE_PGXS=1
 sudo make USE_PGXS=1 install
 ```
-Выполнив данные действия, можно приступать 
+Выполнив данные действия, можно приступать к установке расширения
+ 
+ 10. CREATE EXTENSION tds_fdw;
+11. После этого можно приступить к созданию сервера
+12. CREATE SERVER mssql_svr FOREIGN DATA WRAPPER tds_fdw OPTIONS (servername '192.168.1.82', port '1433', database 'master', tds_version '7.1');
+13. Тут главное не забыть в бранмаувере серевера MS SQL порты  1433 и 1434.
+14. Обсуждался вопрос возможности установки MS SQL сервер на Linux,  установка прошла успешно, но каких-либо преимуществ  при дальнейшей миграции не выявлено.
+15. CREATE USER MAPPING FOR postgres SERVER mssql_svr OPTIONS (username 'sa', password '***************');
+16. Далее есть варианты развития првильные и как пошел я.
+17. Логичным решением сейчас является импортирование схемы из подключенной БД в текущую
+18. postgres=# IMPORT FOREIGN SCHEMA dbo EXCEPT (mssql_table)  FROM SERVER mssql_svr INTO dbo_new OPTIONS(import_default 'true');<br>
+NOTICE:  DB-Library notice: Msg #: 5701, Msg state: 2, Msg: Контекст базы данных изменен на "salesdb"., Server: HOME-PC\SQLEXPRESS, Process: , Line: 1, Level: 0<br>
+NOTICE:  DB-Library notice: Msg #: 5703, Msg state: 1, Msg: Changed language setting to us_english., Server: HOME-PC\SQLEXPRESS, Process: , Line: 1, Level: 0<br>
+IMPORT FOREIGN SCHEMA<br>
+19. Не забывая конечно создать новую схему dbo_new, так dbo я уже ранее создал.
+20. Новые таблицы созданы и их уже можно импортиовать в текущую БД
+21. Можно как я, подключать каждую таблицу руками. Но тут нужно следить за типами полей самому.
+22. Создание таблиц в тукущей БД можно запросом  типа  - <b>create table dbo.products as select *  from dbo_new.products;<b>
+23. Будет создана таблица, структура которой будет соответствовать оригинальной наполненная данными.
+24. Затем создавался первичный ключ
+25.  ALTER TABLE dbo.products add PRIMARY KEY (productid);
+26. Потом различные ограничения и IDENTITY
+27. ALTER TABLE dbo.products
+ALTER COLUMN productid
+ADD generated always AS identity (START WITH 505)
+28. 505 - это select max(productid) + 1 FROM  dbo.products;
+29. Проверка всех таблиц
+30. Всё.
+
