@@ -49,7 +49,7 @@ FROM<br>
 <tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>2</td><td>principal_id</td><td>int</td><td>NO</td><td>UK_principal_name</td></tr>
 <tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>3</td><td>diagram_id</td><td>int</td><td>NO</td><td>PK__sysdiagr__C2B05B6149718787</td></tr>
 <tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>4</td><td>version</td><td>int</td><td>YES</td><td></td></tr>
-<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>5</td><td>definition</td><td>varbinary</td><td>YES</td><td></td>/tr>
+<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>5</td><td>definition</td><td>varbinary</td><td>YES</td><td></td></tr>
 </tbody></table>	
 8. Запрос данных на структуру
 
