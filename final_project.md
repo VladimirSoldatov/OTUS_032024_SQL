@@ -31,15 +31,15 @@ FROM<br>
 <tbody>
 <tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>1</td><td> CustomerID</td><td>int</td><td>NO</td><td>CustomerPK</td></tr>
 <tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>2</td><td>FirstName</td><td>nvarchar</td><td>NO</td><td></td></tr>
-<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td></td></tr>	
+<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td><td></td></tr>
 <tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td></tr>
 <tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>1</td><td>EmployeeID</td><td>int</td><td>NO</td><td>EmployeePK</td></tr>
 <tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>2</td><td>FirstName</td><td>nvarchar</td><td>NO</td><td></td></tr>	
-<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td><td></td></tr>	
-<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td></tr>	
+<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td><td></td></tr>
+<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td></tr>
 <tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>1</td><td>ProductID</td><td>int</td><td>NO</td><td>ProductsPK</td></tr>
-<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>2</td><td>Name</td><td>nvarchar</td><td>NO</td><td></td></tr>	
-<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>3</td><td>Price</td><td>money</td><td>YES</td><td></td></tr>	
+<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>2</td><td>Name</td><td>nvarchar</td><td>NO</td><td></td></tr>
+<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>3</td><td>Price</td><td>money</td><td>YES</td><td></td></tr>
 <tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>1</td><td>SalesID</td><td>int</td><td>NO</td><td>SalesPK</td></tr>
 <tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>2</td><td>SalesPersonID</td><td>int</td><td>NO</td><td>SalesEmployeesFK</td></tr>
 <tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>3</td><td>CustomerID</td><td>int</td><td>NO</td><td>SalesCustomersFK</td></tr>
