@@ -26,29 +26,30 @@ FROM<br>
 7. Результат запроса на структуру
 <table>
 <thead>
-<th>  TABLE_SCHEMA</th><th>Таблица </th><th> TABLE_TYPE	</th><th>№ п.п	</th><th> Поле	</th><th>Тип</th><th>	NULL	</th><th> Constraint_key</th><thead>
+<th>TABLE_SCHEMA</th><th>Таблица</th><th> TABLE_TYPE</th><th>№ п.п</th><th>Поле</th><th>Тип</th><th>NULL</th><th> Constraint_key</th>
+</thead>
 <tbody>
-<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>1</td><td> CustomerID</td><td>int</td><td>NO</td><td>CustomerPK</tr>
-<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>2</td><td>FirstName</td><td>nvarchar</td><td>NO</td><td></td><td></tr>
-<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td><td></td><td></tr>	
-<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td><td></tr>
-<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>1</td><td>EmployeeID</td><td>int</td><td>NO</td><td>EmployeePK
-<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>2</td><td>FirstName</td><td>nvarchar</td><td>NO</td><td></td><td></tr>	
-<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td><td></td><td></tr>	
-<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td><td></tr>	
-<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>1</td><td>ProductID</td><td>int</td><td>NO</td><td>ProductsPK</tr>
-<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>2</td><td>Name</td><td>nvarchar</td><td>NO</td><td></td><td></tr>	
-<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>3</td><td>Price</td><td>money</td><td>YES</td><td></td><td></tr>	
-<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>1</td><td>SalesID</td><td>int</td><td>NO</td><td>SalesPK</tr>
-<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>2</td><td>SalesPersonID</td><td>int</td><td>NO</td><td>SalesEmployeesFK</tr>
-<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>3</td><td>CustomerID</td><td>int</td><td>NO</td><td>SalesCustomersFK</tr>
-<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>4</td><td>ProductID</td><td>int</td><td>NO</td><td>alesProductsFK</tr>
-<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>5</td><td>Quantity</td><td>int</td><td>NO</td><td></td><td></tr>
-<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>1</td><td>name</td><td>nvarchar</td><td>NO</td><td>UK_principal_name</tr>
-<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>2</td><td>principal_id</td><td>int</td><td>NO</td><td>UK_principal_name</tr>
-<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>3</td><td>diagram_id</td><td>int</td><td>NO</td><td>PK__sysdiagr__C2B05B6149718787</tr>
-<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>4</td><td>version</td><td>int</td><td>YES</td><td></td><td></tr>
-<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>5</td><td>definition</td><td>varbinary</td><td>YES</td><td></td><td></tr>
+<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>1</td><td> CustomerID</td><td>int</td><td>NO</td><td>CustomerPK</td></tr>
+<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>2</td><td>FirstName</td><td>nvarchar</td><td>NO</td><td></td></tr>
+<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td></td></tr>	
+<tr><td>dbo</td><td>Customers</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td></tr>
+<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>1</td><td>EmployeeID</td><td>int</td><td>NO</td><td>EmployeePK</td></tr>
+<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>2</td><td>FirstName</td><td>nvarchar</td><td>NO</td><td></td></tr>	
+<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>3</td><td>MiddleInitial</td><td>nvarchar</td><td>YES</td><td></td></tr>	
+<tr><td>dbo</td><td>Employees</td><td>BASE TABLE</td><td>4</td><td>LastName</td><td>nvarchar</td><td>NO</td><td></td></tr>	
+<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>1</td><td>ProductID</td><td>int</td><td>NO</td><td>ProductsPK</td></tr>
+<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>2</td><td>Name</td><td>nvarchar</td><td>NO</td><td></td></tr>	
+<tr><td>dbo</td><td>Products</td><td>BASE TABLE</td><td>3</td><td>Price</td><td>money</td><td>YES</td><td></td></tr>	
+<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>1</td><td>SalesID</td><td>int</td><td>NO</td><td>SalesPK</td></tr>
+<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>2</td><td>SalesPersonID</td><td>int</td><td>NO</td><td>SalesEmployeesFK</td></tr>
+<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>3</td><td>CustomerID</td><td>int</td><td>NO</td><td>SalesCustomersFK</td></tr>
+<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>4</td><td>ProductID</td><td>int</td><td>NO</td><td>alesProductsFK</td></tr>
+<tr><td>dbo</td><td>Sales</td><td>BASE TABLE</td><td>5</td><td>Quantity</td><td>int</td><td>NO</td><td></td></tr>
+<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>1</td><td>name</td><td>nvarchar</td><td>NO</td><td>UK_principal_name</td></tr>
+<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>2</td><td>principal_id</td><td>int</td><td>NO</td><td>UK_principal_name</td></tr>
+<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>3</td><td>diagram_id</td><td>int</td><td>NO</td><td>PK__sysdiagr__C2B05B6149718787</td></tr>
+<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>4</td><td>version</td><td>int</td><td>YES</td><td></td></tr>
+<tr><td>dbo</td><td>sysdiagrams</td><td>BASE TABLE</td><td>5</td><td>definition</td><td>varbinary</td><td>YES</td><td></td>/tr>
 </tbody></table>	
 8. Запрос данных на структуру
 
